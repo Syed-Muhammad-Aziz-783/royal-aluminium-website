@@ -171,11 +171,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .logo-text{font-size:16px;}
   }
   @media (max-width:560px){
-    .logo-text{font-size:13px;}
-    .logo-img{width:36px;height:36px;}
+    .logo-text{font-size:12px;}
+    .logo-img{width:34px;height:34px;}
   }
   @media (max-width:400px){
-    .logo-text-limited{display:none;}
+    .logo-text{font-size:10.5px;}
+    .logo-img{width:30px;height:30px;}
   }
 
   nav.main-nav{display:flex;gap:36px;}
@@ -468,15 +469,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .stat .label{font-size:13px;color:var(--satin);margin-top:4px;}
 
   /* MS -> Aluminium flip stat */
-  .stat-flip{position:relative;height:38px;overflow:hidden;}
+  .stat .num.stat-flip{position:relative;height:38px;overflow:hidden;font-size:20px;}
   .stat-flip .flip-word{
     position:absolute;top:0;left:0;right:0;
+    white-space:nowrap;
     transition:transform 0.6s cubic-bezier(.65,0,.35,1), opacity 0.6s ease;
   }
   .stat-flip .flip-word.word-1{transform:translateY(0);opacity:1;}
   .stat-flip .flip-word.word-2{transform:translateY(100%);opacity:0;}
   .stat-flip.flipped .flip-word.word-1{transform:translateY(-100%);opacity:0;}
   .stat-flip.flipped .flip-word.word-2{transform:translateY(0);opacity:1;}
+  @media (max-width:560px){
+    .stat .num.stat-flip{font-size:15px;}
+  }
 
   .about-copy p{color:#454B54;margin-bottom:18px;font-size:16px;}
   .about-copy p:last-child{margin-bottom:0;}
@@ -1299,11 +1304,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ===== scroll progress bar + back to top ===== */
   var progressFill = document.getElementById('scroll-progress-fill');
   var backToTop = document.getElementById('back-to-top');
+  var heroSection = document.querySelector('.hero');
   window.addEventListener('scroll', function(){
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var scrolled = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
     progressFill.style.width = scrolled + '%';
-    if(window.scrollY > 500){ backToTop.classList.add('show'); }
+    var heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 500;
+    if(window.scrollY > heroBottom){ backToTop.classList.add('show'); }
     else { backToTop.classList.remove('show'); }
   }, {passive:true});
   backToTop.addEventListener('click', function(){
