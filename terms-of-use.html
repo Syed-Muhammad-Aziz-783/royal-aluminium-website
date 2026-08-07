@@ -39,9 +39,24 @@
     background:var(--graphite);padding:20px 24px;
     display:flex;align-items:center;gap:12px;
   }
-  .top-bar img{width:36px;height:36px;object-fit:contain;background:var(--alu-white);border-radius:6px;padding:2px;}
-  .top-bar span{font-family:var(--font-display);font-weight:700;color:var(--alu-white);font-size:16px;}
-  .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .top-bar img{width:42px;height:42px;object-fit:contain;background:var(--alu-white);border-radius:6px;padding:2px;flex-shrink:0;}
+  .top-bar span{font-family:var(--font-display);font-weight:700;color:var(--alu-white);font-size:21px;white-space:nowrap;}
+  .top-bar .limited-word{font-weight:500;opacity:0.75;}
+  .brand-link{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;}
+  @media (max-width:980px){
+    .top-bar span{font-size:17px;}
+  }
+  @media (max-width:900px){
+    .top-bar span{font-size:16px;}
+  }
+  @media (max-width:560px){
+    .top-bar span{font-size:15px;}
+    .top-bar img{width:36px;height:36px;}
+  }
+  @media (max-width:400px){
+    .top-bar span{font-size:13px;}
+    .top-bar img{width:32px;height:32px;}
+  }
   .top-bar a.back{margin-left:auto;color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;}
   .wrap{max-width:760px;margin:0 auto;padding:140px 24px 100px;}
   .eyebrow{font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);}
@@ -92,7 +107,7 @@
 <div class="top-bar">
   <a href="/" class="brand-link">
     <img src="logo.jpeg" alt="Royal Aluminium">
-    <span>Royal Aluminium Rwanda Ltd</span>
+    <span>Royal Aluminium Rwanda <span class="limited-word">Ltd</span></span>
   </a>
   <a href="/" class="back">← Back to Home</a>
 </div>
